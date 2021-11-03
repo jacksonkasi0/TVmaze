@@ -14,10 +14,19 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
   </head>
 
   <body>
     <nav>
+      <select id="selector" onchange="location = this.value">
+        <option value="#" selected>&nbsp;&nbsp;Select Episode</option>
+      </select>
+
       <input
         type="text"
         id="searchInput"

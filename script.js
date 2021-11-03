@@ -2,18 +2,14 @@ const container = document.querySelector(".container_");
 
 showMovies();
 
-
 async function showMovies() {
   
-  const URL = "https://api.tvmaze.com/shows/82/episodes"
-  const responce = await fetch(URL)
-  let allEpisodes = await responce.json()
 
-  // const allEpisodes = getAllEpisodes();
+  const allEpisodes = getAllEpisodes();
 
   allEpisodes.forEach((item) => {
     let season_ = item.season;
-    let episode_ = item.number; 
+    let episode_ = item.number;
 
     if (item.season < 10) {
       season_ = "0" + item.season;
@@ -31,9 +27,18 @@ async function showMovies() {
     let summaryEndPoint = Summary.search(".</p><p>");
     Summary = Summary.slice(0, summaryEndPoint);
 
+    // Selector >>>
+
+    const Selector = document.getElementById("selector");
+    let options = document.createElement("option");
+    options.innerHTML = `&nbsp; S${season_}E${episode_} - ${item.name}`;
+    options.value = `#${item.id}`;
+    Selector.append(options);
+
     // MOvie Card >>>
     const movieCard = document.createElement("div");
     movieCard.className = "movieCard";
+    movieCard.id = `${item.id}`;
     container.appendChild(movieCard);
 
     // card head >>>
@@ -62,7 +67,7 @@ async function showMovies() {
 
     // sepi --> season & episode
     const sepi = document.createElement("p");
-    sepi.className="sepi"
+    sepi.className = "sepi";
     sepi.innerText = `S${season_}E${episode_}`; // see
 
     figure.append(imageFram, sepi);
@@ -72,11 +77,11 @@ async function showMovies() {
     cardBody.className = "cardBody";
 
     const movieDisc = document.createElement("span");
-    movieDisc.className="movieDisc"
+    movieDisc.className = "movieDisc";
     movieDisc.innerHTML = `${Summary}`;
 
     const airtime = document.createElement("small");
-    airtime.className="airTime"
+    airtime.className = "airTime";
     airtime.innerText = `Broadcast: ${item.airdate}`;
 
     const br = document.createElement("br");
