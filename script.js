@@ -3,9 +3,12 @@ const container = document.querySelector(".container_");
 showMovies();
 
 async function showMovies() {
+  // const allEpisodes = getAllEpisodes();
   
+  const URL = "https://api.tvmaze.com/shows/82/episodes"
+  const responce = await fetch(URL)
+  let allEpisodes = await responce.json()
 
-  const allEpisodes = getAllEpisodes();
 
   allEpisodes.forEach((item) => {
     let season_ = item.season;
