@@ -2,12 +2,18 @@ const container = document.querySelector(".container_");
 
 showMovies();
 
-function showMovies() {
-  const allEpisodes = getAllEpisodes();
+
+async function showMovies() {
+  
+  const URL = "https://api.tvmaze.com/shows/82/episodes"
+  const responce = await fetch(URL)
+  let allEpisodes = await responce.json()
+
+  // const allEpisodes = getAllEpisodes();
 
   allEpisodes.forEach((item) => {
     let season_ = item.season;
-    let episode_ = item.number;
+    let episode_ = item.number; 
 
     if (item.season < 10) {
       season_ = "0" + item.season;
