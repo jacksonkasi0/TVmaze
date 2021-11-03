@@ -46,9 +46,9 @@ function showMovies() {
     img.alt = `${item.name}`;
 
     const figCap = document.createElement("figcaption");
+    figCap.className = "carousel-caption";
 
     const figcapTitle = document.createElement("strong");
-    figCap.className = "carousel-caption";
     figcapTitle.innerText = `${item.name}`;
     figCap.appendChild(figcapTitle);
 
@@ -56,7 +56,8 @@ function showMovies() {
 
     // sepi --> season & episode
     const sepi = document.createElement("p");
-    sepi.innerText = `S${season_}E${episode_}`; // kasi
+    sepi.className="sepi"
+    sepi.innerText = `S${season_}E${episode_}`; // see
 
     figure.append(imageFram, sepi);
 
@@ -65,9 +66,11 @@ function showMovies() {
     cardBody.className = "cardBody";
 
     const movieDisc = document.createElement("span");
+    movieDisc.className="movieDisc"
     movieDisc.innerHTML = `${Summary}`;
 
     const airtime = document.createElement("small");
+    airtime.className="airTime"
     airtime.innerText = `Broadcast: ${item.airdate}`;
 
     const br = document.createElement("br");
