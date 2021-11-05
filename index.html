@@ -23,8 +23,13 @@
 
   <body>
     <nav>
+
+        <select id="showSlector"  onclick="showChange()" >
+          <!-- <option value="#" selected>&nbsp;&nbsp;Select Show</option> -->
+        </select>
+
       <select id="selector" onchange="location = this.value">
-        <option value="#" selected>&nbsp;&nbsp;Select Episode</option>
+        <!-- <option value="#" selected>&nbsp;&nbsp;Select Episode</option> -->
       </select>
 
       <input
@@ -41,6 +46,7 @@
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
+    <script src="./shows.js"></script>
 
     <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>

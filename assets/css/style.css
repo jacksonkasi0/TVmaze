@@ -28,7 +28,7 @@ nav {
 }
 /* selector >>> */
 
-#selector {
+select {
   width: 100px;
   border: none;
   background: rgba(255, 255, 255, 0.4);
