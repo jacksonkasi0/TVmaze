@@ -22,13 +22,8 @@ async function showMovies() {
       episode_ = "0" + item.number;
     }
 
-    //   ----------- solved summary error's >>>
-
-    let Summary = item.summary;
-
-    Summary = Summary.replace("<p></p>", "");
-    let summaryEndPoint = Summary.search(".</p><p>");
-    Summary = Summary.slice(0, summaryEndPoint);
+    //   ----------- solved summary error's >>> now i some code remove
+      let Summary = item.summary;
 
     // Selector >>>
 
