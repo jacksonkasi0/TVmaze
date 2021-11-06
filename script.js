@@ -25,11 +25,18 @@ function showChange() {
 }
 
 async function showMovies() {
-  // const allEpisodes = getAllEpisodes();
-
   const allShows = getAllShows();
+
   const responce = await fetch(EpisodeURL);
   let allEpisodes = await responce.json();
+
+  // short alphabetic order (Shows) >>>
+
+  allShows.sort((a, b) => {
+    var textA = a.name.toUpperCase();
+    var textB = b.name.toUpperCase();
+    return textA < textB ? -1 : textA > textB ? 1 : 0; // return false = -1 / true = 1|0
+  });
 
   allShows.forEach((item) => {
     // Show Selector >>>
@@ -56,13 +63,8 @@ async function showMovies() {
         episode_ = "0" + item.number;
       }
 
-      //   ----------- solved summary error's >>>
-
+      //   ----------- solved summary error's >>> now i some code remove
       let Summary = item.summary;
-
-      Summary = Summary.replace("<p></p>", "");
-      let summaryEndPoint = Summary.search(".</p><p>");
-      Summary = Summary.slice(0, summaryEndPoint);
 
       // Episode Selector >>>
 
