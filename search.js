@@ -1,5 +1,5 @@
 function SearchFunc() {
-  var searchInput = document.querySelector("#searchInput");
+  var searchInput = document.querySelector(".searchInput");
   let filter = searchInput.value.toUpperCase();
   let movieCard = document.getElementsByClassName("movieCard"); // search field
 
@@ -8,10 +8,10 @@ function SearchFunc() {
   let movieDisc = document.querySelectorAll(".movieDisc"); // movie discription
   let airTime = document.querySelectorAll(".airTime");
 
-  for (let i = 0; i < movieCard.length; i++) {
+  for (let i = 0; i < movieCard.length || showCard.length; i++) {
     //  let titleValue = movieTitle[i].innerText; // i am just short this code...
 
-    let [titleValue, sepiValue, discValue, dateValue] = [
+    let [titleValue, sepiValue, discValue, dateValue, showTitle] = [
       movieTitle[i].innerText,
       sepi[i].innerHTML,
       movieDisc[i].innerHTML,

@@ -1,0 +1,203 @@
+.container_2 {
+  display: grid;
+  justify-items: center;
+}
+
+.showCard {
+  position: relative;
+  width: 80% !important;
+  height: 400px;
+  border-radius: 10px;
+  margin: 20px;
+  overflow: hidden;
+  display: flex;
+  background: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+@media screen and (max-width: 1085px) {
+  .showCard {
+    flex-direction: column;
+    width: 80%;
+    height: auto !important;
+  }
+  .cardRight{
+    width: fit-content;
+    padding: 20px 0 !important;
+    margin: auto  !important;
+  }
+  .cardLeft{
+    width: fit-content !important;
+  }
+  .genres{
+    justify-content: center;
+    flex-wrap: wrap;    
+  }
+}
+
+@media screen and (max-width: 611px) {
+  .cardRight{
+    flex-direction: column !important;
+  }
+  .showCard{
+    width: fit-content;
+  }
+  .para{
+    height: 100px !important;
+  }
+}
+
+
+.rating {
+  position: absolute;
+  padding: 30px;
+  top: -15px;
+  right: -15px;
+  border-radius: 50%;
+  color: white;
+  background: rgb(238, 12, 12);
+  background: linear-gradient(
+    24deg,
+    rgba(238, 12, 12, 0.9668242296918768) 11%,
+    rgba(252, 212, 7, 1) 94%
+  );
+}
+
+.cardRight {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.cardRight img {
+  height: 300px;
+  width: 220px;
+  border-radius: 10px 0 0 10px;
+}
+.imgL {
+  width: 220px;
+  height: 300px;
+  border-radius: 0 10px 10px 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background: white;
+}
+
+.inFo {
+  width: 90%;
+  margin-top: 20px !important;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.showTitle:hover {
+  background-image: linear-gradient(
+    90deg,
+    rgb(0, 106, 192) 11%,
+    rgba(247, 0, 142, 1) 89%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.genres {
+  display: flex;
+  margin-bottom: 10px;
+}
+.genres p {
+  color: white;
+  font-weight: bolder;
+  margin: 5px;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.inFo strong {
+  font-size: 30px;
+  color: black;
+}
+
+tr {
+  display: flex;
+}
+td {
+  margin: 5px;
+}
+.info {
+  text-align: center;
+  color: white;
+  font-weight: bolder;
+  padding: 0 5px;
+  border-radius: 3px;
+  background: rgb(125, 12, 238);
+  background: linear-gradient(
+    90deg,
+    rgba(125, 12, 238, 0.9668242296918768) 11%,
+    rgba(247, 0, 142, 1) 89%
+  );
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.info a {
+  text-decoration: none !important;
+  color: white !important;
+}
+.info a:hover {
+  color: rgb(247, 255, 137) !important;
+}
+
+.imgL div a {
+  color: white;
+  text-decoration: none;
+}
+
+.cardLeft {
+  width: 550px;
+  margin-top: 50px;
+  margin: auto 25px;
+}
+
+.para {
+  overflow: scroll;
+  height: 230px;
+
+}
+
+.cardLeft .para p {
+  text-indent: 20px;
+}
+.cardLeft .para p::selection {
+  color: white;
+  background-color: black;
+}
+
+.img1_ {
+  position: fixed;
+  left: -200px;
+  width: 450px;
+  margin-top: -150px;
+  z-index: -1;
+}
+
+.img2_ {
+  margin-top: 140px;
+  position: fixed;
+  margin-left: 20em;
+  width: 300px;
+  z-index: -1;
+}
+
+.img3_ {
+  position: fixed;
+  width: 100px;
+  margin-top: 260px;
+  left: 50px;
+  z-index: -1;
+}

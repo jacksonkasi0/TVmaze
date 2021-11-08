@@ -1,26 +1,33 @@
-const container = document.querySelector(".container_");
+const container = document.querySelector(".epiContainer_");
 
 var EpisodeURL = "https://api.tvmaze.com/shows/82/episodes";
 let showUrl;
 
 function showChange() {
-  let Url = document.querySelector("#showSlector");
-  showUrl = Url.value;
+  let Url = document.querySelector(".showSlector");
 
+  var selectedValue = Url.options[Url.selectedIndex].innerHTML;
+  const showName = document.querySelector(".showName")
+  showName.innerHTML = selectedValue;
+
+
+  showUrl = Url.value;
   EpisodeURL = showUrl;
+  console.log(EpisodeURL);
 
   showMovies();
 
-  let [showSlector, epiSelector, container_] = [
-    document.querySelector("#showSlector"),
+  [
+    document.querySelector(".showSlector"),
     document.querySelector("#selector"),
-    document.querySelector(".container_"),
+    document.querySelector(".epiContainer_"),
   ].find((item) => {
     while (item.hasChildNodes()) {
       // removie existing child elements
       item.removeChild(item.firstChild);
     }
     //
+  
   });
 }
 
@@ -40,8 +47,7 @@ async function showMovies() {
 
   allShows.forEach((item) => {
     // Show Selector >>>
-
-    const showSelector = document.querySelector("#showSlector");
+    const showSelector = document.querySelector(".showSlector");
     let showOption = document.createElement("option");
     showOption.innerHTML = `&nbsp; ${item.name}`;
     showOption.value = `${item._links.self.href}/episodes`;
@@ -49,6 +55,7 @@ async function showMovies() {
     showSelector.appendChild(showOption);
   });
 
+ 
   window.onload = Episode();
   function Episode() {
     allEpisodes.forEach((item) => {
@@ -74,6 +81,8 @@ async function showMovies() {
       options.value = `#${item.id}`;
       Selector.append(options);
 
+      
+
       // MOvie Card >>>
       const movieCard = document.createElement("div");
       movieCard.className = "movieCard";
@@ -92,7 +101,15 @@ async function showMovies() {
       imageFram.className = "imgFram";
 
       const img = document.createElement("img");
-      img.src = `${item.image.medium}`;
+
+      let itemImg = item.image;
+      if (itemImg === null || "") {
+        itemImg = "./assets/img/movie.gif";
+      } else {
+        itemImg = item.image.medium;
+      }
+
+      img.src = `${itemImg}`;
       img.alt = `${item.name}`;
 
       const figCap = document.createElement("figcaption");
