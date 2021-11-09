@@ -1,4 +1,4 @@
-let showName_ = "";
+let showName_ = "k";
 var EpisodeURL;
 
 // ---------------------- index.html
@@ -102,15 +102,12 @@ async function displayShow() {
 
     const showLink = document.createElement("a");
     showLink.href = "#";
-    showLink.className = "showTitle";
     showLink.id = `${item._links.self.href}/episodes`;
 
     // get id value when click the showLink
     showLink.addEventListener("click", () => {
       EpisodeURL = showLink.id;
-
-      showName_ = document.querySelector(`.showTitle > strong`).innerText;
-
+      showName_ = item.name;
       showChange();
     });
 
