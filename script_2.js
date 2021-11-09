@@ -1,21 +1,17 @@
 const container = document.querySelector(".epiContainer_");
 
-var EpisodeURL = "https://api.tvmaze.com/shows/82/episodes";
-let showUrl;
-
+// ----------------- page.html >>>
 function showChange() {
-  let Url = document.querySelector(".showSlector");
+  // ---------- show loading
+  let loading = document.querySelector(".loading");
+  loading.style.display = "";
+  // >>>
 
-  var selectedValue = Url.options[Url.selectedIndex].innerHTML;
-  const showName = document.querySelector(".showName")
-  showName.innerHTML = selectedValue;
+  const showName = document.querySelector(".showName");
+  showName.innerHTML = showName_;
 
-
-  showUrl = Url.value;
-  EpisodeURL = showUrl;
-  console.log(EpisodeURL);
-
-  showMovies();
+  const container = document.getElementById("showsContainer");
+  container.className = "container_ epiContainer_";
 
   [
     document.querySelector(".showSlector"),
@@ -27,37 +23,38 @@ function showChange() {
       item.removeChild(item.firstChild);
     }
     //
-  
   });
+  showMovies();
+
 }
 
 async function showMovies() {
-  const allShows = getAllShows();
+  //   remove showSelector
+  const removeSelector = document.querySelector(".showSlector");
+  removeSelector.style.display = "none";
+  //  add navigate btn, episode slector & showName
+  const navBtn = document.querySelector(".navBtn");
+  navBtn.style.display = "";
+  const selector = document.querySelector("#selector");
+  selector.style.display = "";
+  const showName = document.querySelector(".showName");
+  showName.style.display = "";
+
+  // change onkeyup for searchInput
+  const searchInput = document.querySelector("#searchInput");
+  searchInput.addEventListener("keyup", SearchFunc_2);
+
+  // -----------------------
 
   const responce = await fetch(EpisodeURL);
   let allEpisodes = await responce.json();
 
   // short alphabetic order (Shows) >>>
 
-  allShows.sort((a, b) => {
-    var textA = a.name.toUpperCase();
-    var textB = b.name.toUpperCase();
-    return textA < textB ? -1 : textA > textB ? 1 : 0; // return false = -1 / true = 1|0
-  });
-
-  allShows.forEach((item) => {
-    // Show Selector >>>
-    const showSelector = document.querySelector(".showSlector");
-    let showOption = document.createElement("option");
-    showOption.innerHTML = `&nbsp; ${item.name}`;
-    showOption.value = `${item._links.self.href}/episodes`;
-    showOption.className = "showOption";
-    showSelector.appendChild(showOption);
-  });
-
- 
   window.onload = Episode();
   function Episode() {
+    const container = document.querySelector(".epiContainer_");
+
     allEpisodes.forEach((item) => {
       let season_ = item.season;
       let episode_ = item.number;
@@ -80,8 +77,6 @@ async function showMovies() {
       options.innerHTML = `&nbsp; S${season_}E${episode_} - ${item.name}`;
       options.value = `#${item.id}`;
       Selector.append(options);
-
-      
 
       // MOvie Card >>>
       const movieCard = document.createElement("div");
@@ -124,7 +119,7 @@ async function showMovies() {
       // sepi --> season & episode
       const sepi = document.createElement("p");
       sepi.className = "sepi";
-      sepi.innerText = `S${season_}E${episode_}`; // see
+      sepi.innerText = `S${season_}E${episode_}`;
 
       figure.append(imageFram, sepi);
 
@@ -146,8 +141,9 @@ async function showMovies() {
       button.className = "btn btn-primary";
 
       const a = document.createElement("a");
-      a.href = `#`; //
+      a.href = `${item.url}`; //
       a.innerText = "click";
+      a.target = "_blank";
       button.appendChild(a);
 
       cardBody.append(movieDisc, airtime, br, button);
@@ -159,7 +155,12 @@ async function showMovies() {
     });
   }
 
-  // ---------- >>>
-}
+    //  >>>
+    let movieCard = document.querySelectorAll(".movieCard")
+    let displayElements = document.querySelector(".display");
+    displayElements.innerHTML = `Displaying ${movieCard.length} Shows`
 
-showMovies();
+  //  displaying loading >>>
+  let loading = document.querySelector(".loading");
+  loading.style.display = "none";
+}
