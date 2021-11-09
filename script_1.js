@@ -181,7 +181,7 @@ async function displayShow() {
     let network = item.network;
     let of_link = item.officialSite;
     if (network === null) {
-      network = "--";
+      network = "--"
     } else {
       network = item.network.name;
     }
