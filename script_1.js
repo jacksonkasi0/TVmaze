@@ -22,18 +22,6 @@ async function displayShow() {
   const showName = document.querySelector(".showName");
   showName.style.display = "none";
 
-  [
-    document.querySelector("#showsContainer"),
-    document.querySelector(".showSlector"),
-    document.querySelector("#selector"),
-    document.querySelector(".epiContainer_"),
-  ].find((item) => {
-    while (item.hasChildNodes()) {
-      // removie existing child elements
-      item.removeChild(item.firstChild);
-    }
-  });
-
   // change onkeyup for searchInput
   const searchInput = document.querySelector("#searchInput");
   searchInput.addEventListener("keyup", SearchFunc_1);
