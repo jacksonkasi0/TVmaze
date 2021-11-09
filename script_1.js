@@ -102,25 +102,15 @@ async function displayShow() {
 
     const showLink = document.createElement("a");
     showLink.href = "#";
+    showLink.className = "showTitle";
     showLink.id = `${item._links.self.href}/episodes`;
 
-    showLink.className = "link";
     // get id value when click the showLink
     showLink.addEventListener("click", () => {
       EpisodeURL = showLink.id;
-      function getElementByXpath(path) {
-        return document.evaluate(
-          path,
-          document,
-          null,
-          XPathResult.FIRST_ORDERED_NODE_TYPE,
-          null
-        ).singleNodeValue;
-      }
 
-      showName_ = getElementByXpath(
-        `//*[@id="${showLink.id}"]/strong`
-      ).innerText;
+      showName_ = document.querySelector(`.showTitle > strong`).innerText;
+
       showChange();
     });
 
@@ -181,7 +171,7 @@ async function displayShow() {
     let network = item.network;
     let of_link = item.officialSite;
     if (network === null) {
-      network = "--"
+      network = "--";
     } else {
       network = item.network.name;
     }

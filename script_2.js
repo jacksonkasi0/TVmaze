@@ -5,7 +5,8 @@ function showChange() {
   // ---------- show loading
   let loading = document.querySelector(".loading");
   loading.style.display = "";
-  // >>>
+  
+  //  displaying show name>>>
 
   const showName = document.querySelector(".showName");
   showName.innerHTML = showName_;
