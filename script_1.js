@@ -3,7 +3,15 @@ var EpisodeURL;
 
 // ---------------------- index.html
 
-displayShow();
+displayShow().then(() => {
+  //  displaying loading >>>
+  let loading = document.querySelector(".loading");
+  loading.style.display = "none";
+  //  >>>
+  let ShowCard = document.querySelectorAll(".showCard");
+  let displayElements = document.querySelector(".display");
+  displayElements.innerHTML = `Found ${ShowCard.length} Shows`;
+}, 100);
 
 async function displayShow() {
   //  hide navBtn, showNameBtn & Episode Selector
@@ -13,6 +21,18 @@ async function displayShow() {
   selector.style.display = "none";
   const showName = document.querySelector(".showName");
   showName.style.display = "none";
+
+  [
+    document.querySelector("#showsContainer"),
+    document.querySelector(".showSlector"),
+    document.querySelector("#selector"),
+    document.querySelector(".epiContainer_"),
+  ].find((item) => {
+    while (item.hasChildNodes()) {
+      // removie existing child elements
+      item.removeChild(item.firstChild);
+    }
+  });
 
   // change onkeyup for searchInput
   const searchInput = document.querySelector("#searchInput");
@@ -199,13 +219,3 @@ async function displayShow() {
     showCard.append(rating, cardRight, cardLeft);
   });
 }
-
-displayShow().then(() => {
-  //  displaying loading >>>
-  let loading = document.querySelector(".loading");
-  loading.style.display = "none";
-  //  >>>
-  let ShowCard = document.querySelectorAll(".showCard");
-  let displayElements = document.querySelector(".display");
-  displayElements.innerHTML = `Found ${ShowCard.length} Shows`;
-}, 100);
