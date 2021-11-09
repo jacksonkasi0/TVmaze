@@ -1,4 +1,4 @@
-let showName_ = "k";
+let showName_ = "";
 var EpisodeURL;
 
 // ---------------------- index.html
